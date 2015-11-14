@@ -1,0 +1,228 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" Inherits="AspDotNetStorefront.MasterPageBase" %>
+
+<%@ Register TagPrefix="aspdnsfc" Namespace="AspDotNetStorefrontControls" Assembly="AspDotNetStorefrontControls" %>
+<%@ Register TagPrefix="aspdnsf" TagName="Topic" Src="~/Controls/TopicControl.ascx" %>
+<%@ Register TagPrefix="aspdnsf" TagName="XmlPackage" Src="~/Controls/XmlPackageControl.ascx" %>
+<%@ Register TagPrefix="custom" TagName="Search" Src="~/Controls/Search.ascx" %>
+<%@ Import Namespace="AspDotNetStorefrontCore" %>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head id="Head1" runat="server">
+
+    <%-- Leave the title empty, it will get populated at runtime --%>
+    <title></title>
+    <%-- Leave the description and keyword content empty, it will get populated at runtime --%>
+
+    <!-- Meta imports [begin] -->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
+    <!-- Meta imports [end] -->
+
+    <!-- Social imports [begin] -->
+    <!-- Social imports [end] -->
+
+    <!-- The skin ref will base on the current theme applied so we don't need to declare here which css file to use -->
+    <!--<link runat="server" rel="stylesheet" href="~/skins/skin_1/style.css" type="text/css">-->
+
+
+ 
+
+    <!-- CSS imports [begin] -->
+    <link rel="stylesheet" href="css/style.css" type="text/css" />
+    <link rel="stylesheet" href="css/media.css" type="text/css" />
+    <link rel="stylesheet" href="css/jquery.navobile.css" type="text/css" />
+    <link rel="stylesheet" href="css/smoothproducts.css" type="text/css" /> 
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+    <link rel="stylesheet" href="css/bootstrap-overrides.css" type="text/css" />
+    <!-- CSS imports [end] -->
+ 
+    <!-- JS imports [begin] --> 
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery-2.1.1.min.js"></script>    
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery.toggle.js"></script>   
+    <script type="text/javascript" src="App_Templates/Skin_1/js/masonry.min.js"></script>
+    <script type="text/javascript" src="App_Templates/Skin_1/js/sticky-kit.min.js"></script>  
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery.glide.min.js"></script> 
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery.pep.js"></script> 
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery.elevateZoom-3.0.8.min.js"></script>
+    <script type="text/javascript" src="App_Templates/Skin_1/js/smoothproducts.min.js"></script>
+    <script type="text/javascript" src="App_Templates/Skin_1/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="App_Templates/Skin_1/js/front-page.js"></script> 
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery.session.js"></script> 
+    <script type="text/javascript" src="App_Templates/Skin_1/js/scripts.js"></script> 
+    <script type="text/javascript" src="App_Templates/Skin_1/js/jquery.sequence-min.js"></script> 
+  
+    <%-- jQuery is required in versions 9.4 and higher --%> 
+    <script type="text/javascript">
+        adnsf$ = jQuery; <%-- to avoid conflicts with existing jQuery versions and other javascript frameworks, change this line to adnsf$ = jQuery.noConflict(); --%>
+    </script>
+
+    <%--This xmlpackage can be used to add dynamic data to javascripts such as tracking scripts that should run before the closing head tag--%>
+    <aspdnsf:XmlPackage runat="server" PackageName="script.headclose" />
+
+</head>
+<body>   
+
+    <asp:Literal ID="ltrPageInfo" runat="server" Text='<%$ Tokens:PageInfo %>' />
+    <form id="form1" runat="server">
+        <%  if (RequireScriptManager)
+            { %>
+        <%-- Only render for pages that require ajax --%>
+        <asp:ScriptManager ID="scrptMgr" runat="server">
+        </asp:ScriptManager>
+        <% } %>
+
+    <!-- top header start -->
+    <aspdnsf:Topic runat="server" TopicName="Template.Header" />
+    <!-- top header end--> 
+
+    <header class="header" id="header"> 
+        <div>
+            <div class="logo-slider" id="logo-slider">
+                <a href="default.aspx" title="straitmusic.com"> 
+                    <img src="App_Templates/Skin_1/img/header-logo.png" alt="Strait Music Company"  id="logo-mobile-slider" class="logo-desktop"/> 
+                </a>
+            </div> 
+            <div class="nav-button" id="nav-button">
+                <button id="navigation-button">
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                </button>
+            </div>
+            <div class="logo" id="logo-main">
+                <a href="default.aspx" title="straitmusic.com"> 
+                    <img src="App_Templates/Skin_1/img/header-logo.png" alt="Strait Music Company"  id="logo-desktop" class="logo-desktop"/> 
+                </a>
+            </div>  
+            <div class="header-mid">
+                <div class="tagline">Helping Texans Make Music Since 1963</div>
+                <div class="search"> 
+                    <custom:Search ID="Search1" runat="server" /> 
+                </div>
+            </div> 
+            
+            <div class="links" id="links">  
+                <ul>   
+                    <li><a class="very-top-nav" href="/signin.aspx">login</a></li> 
+                    <li><a class="very-top-nav" href="/account.aspx">my account</a></li>
+                    <li><a class="very-top-nav" href="/t-locations.aspx ">locations</a></li>
+                    <li><a class="very-top-nav" href="/shoppingcart.aspx">My Cart</a></li>
+
+                </ul>
+            </div> 
+            <div class="clear"></div>
+        </div>
+    </header>
+    <!-- top header end -->
+     
+    <div id="main" class="main">   
+        <!-- TOP MENU -->
+        <nav class="navigation" id="navigation"> 
+            <div class="navigation-wrap" id="navigation-wrap">
+                
+                <!-- left navigation start -->
+
+                <!--<div class="nav-wrapper direct-link">
+                    <h6 class="bar">
+                        <a href="/shoppingcart.aspx">Go to Cart</a>
+                    </h6>
+                </div>-->
+                <div class="nav-wrapper always-show nav-search">
+                    <h6 class="bar">
+                    Search
+                    </h6>    
+                    <custom:Search ID="Search2" runat="server" /> 
+                </div>
+                 
+
+                <%--
+                <aspdnsf:Topic runat="server" TopicName="Template.TopNavigation" />
+                --%>
+
+                <aspdnsf:Topic runat="server" TopicName="Template.VerticalNavigation" />
+                
+                <div class="nav-wrapper header-links">
+                    <h6 class="bar">
+                    Account
+                    </h6>    
+
+                    <ul class="entity-menu" xmlns:msxsl="urn:schemas-microsoft-com:xslt">
+                        
+                        <li class="menu-item"><a href="/signin.aspx">login</a></li> 
+                        <li class="menu-item"><a href="/account.aspx">my account</a></li>
+                        <li class="menu-item"><a href="/t-locations.aspx ">locations</a></li>
+                        <li class="menu-item"><a href="/shoppingcart.aspx">My Cart</a></li> 
+                    </ul> 
+
+                </div>
+                <!-- left navigation end -->
+  
+            </div> 
+        </nav>
+        <!-- END TOP MENU -->    
+
+        <article id="content">    
+
+            <div class="breadcrumbs" >
+                <%-- The ID SectionTitle is required --%>
+                <a id="homeLink" class="home-link" runat="server" href="~/default.aspx">
+                    <asp:Literal runat="server" Text='<%$ Tokens:StringResource, menu.home %>' />
+                </a>
+                <asp:Literal runat="server" Text='<%$ Tokens:AppConfig, BreadcrumbSeparator %>' />
+                <b>
+                <asp:Literal ID="SectionTitle" runat="server" Text='' />
+                </b> 
+            </div>
+            
+            
+
+            <!-- CONTENTS START --> 
+            <asp:ContentPlaceHolder ID="PageContent" runat="server">
+            </asp:ContentPlaceHolder>
+            <!-- CONTENTS END --> 
+
+            <div class="clear"></div> 
+        </article> 
+    </div>      
+
+    <footer class="footer">
+        <div class="table">
+            <div class="offset"></div>  <!--offset box-->
+            <div class="wraper">  
+                <div class="masonry-fix" id="masonry-fix"> 
+
+
+                    <!--#include file="./Templates/footerMenu.inc"--> 
+<%-- 
+                    <aspdnsf:Topic ID="TopicFooter" runat="server" TopicName="Template.Footer" />
+                    <aspdnsf:Topic ID="TopicSubFooter" runat="server" TopicName="Template.SubFooter" /> 
+--%>
+                </div> 
+            </div>
+        </div>
+    </footer>   
+  
+    <link rel="stylesheet" href="App_Templates/Skin_1/css/style.css" type="text/css" />
+    <link rel="stylesheet" href="App_Templates/Skin_1/css/media.css" type="text/css" />
+     
+</form>
+ 
+<asp:Literal ID="litBuySafeSeal" runat="server" Text='<%$ Tokens:BuySafeSeal %>' />
+<asp:Literal ID="litBongoExtend" runat="server" Text='<%$ Tokens:BongoExtend %>' />
+<asp:Literal ID="litTrustedStores" runat="server" Text='<%$ Tokens: XmlPackage, skin.trustedstores.xml.config %>' />
+<%--This xmlpackage can be used to add dynamic data to javascripts such as tracking scripts that should run before the closing body tag--%>
+<aspdnsf:XmlPackage runat="server" PackageName="script.bodyclose" />
+
+
+
+</body>
+</html>
+
+
+
+
+
+
